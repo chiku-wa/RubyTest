@@ -199,5 +199,93 @@ def question_test?
   puts str.nil?
 end
 
-puts str.nil?
 question_test?
+
+# ====================
+# 2.13 !で終わるメソッド
+# ====================
+def exclamation_test
+  str = "abc"
+
+  # 変数そのものの出力は変わらない
+  # abc
+  puts str.upcase
+  puts str
+
+  # !で終わるメソッドは破壊的メソッドと呼ばれ、変数そのものを書き換える
+  # ABC
+  puts str.upcase!
+  puts str
+end
+
+exclamation_test
+
+# ====================
+# 2.12.2 エイリアスメソッド
+# ====================
+def length_size_test
+  # lengthとsizeは同じ性質を持ち、双方とも文字列の長さを返す
+  str = "abcde"
+  puts str.length # ->5
+  puts str.size   # ->5
+end
+
+length_size_test
+
+# ====================
+# 2.12.4 疑似変数
+# ====================
+def pseudo_variable_test
+  # 特定の変数は疑似変数と呼ばれる
+
+  # self:オブジェクト自身
+  puts self
+
+  # __FILE__:現在のソースファイル名
+  puts __FILE__
+
+  # __LINE__:現在のソースファイル中の番号
+  puts __LINE__
+
+  # ___ENCODING_:現在のソースファイルのスクリプトエンコーディング
+  puts __ENCODING__
+end
+
+pseudo_variable_test
+
+# ====================
+# 2.12.5 参照の概念を理解する
+# ====================
+def object_reference_test
+  # オブジェクトIDを確認する
+  # 同じ値を格納しても、参照が異なるため、異なるIDが出力される
+  str1 = "abc"
+  puts str1.object_id
+
+  str2 = "abc"
+  puts str2.object_id
+
+  # 別の変数に代入すると参照がコピーされるため、同じオブジェクトIDが出力される
+  str3 = str2
+  puts str3.object_id
+
+  # equal?メソッドでオブジェクトが同じかどうかを判定できる
+  puts str2.equal?(str3) # ->true
+
+  # 変数を書き換えると参照が変わるため、異なるオブジェクトIDを返すようになる
+  str2 = "def"
+  puts str2.object_id
+  puts str3.object_id
+
+  puts str2.equal?(str3) # ->false
+end
+
+object_reference_test
+
+# ====================
+# 2.12.6 組み込みライブラリ、標準ライブラリ、gem
+# ====================
+def builtin_standard_gem_test
+end
+
+builtin_standard_gem_test
