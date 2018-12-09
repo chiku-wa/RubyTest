@@ -20,10 +20,10 @@ puts indentation_hyphen
 # インデントが削除される
 def indentation_tilde
   str = <<~EOS
-    　「~」
-      1行目
-      2行目
-      3行目
+    「~」
+    1行目
+    2行目
+    3行目
   EOS
 
   str
@@ -284,8 +284,112 @@ object_reference_test
 
 # ====================
 # 2.12.6 組み込みライブラリ、標準ライブラリ、gem
+# 2.12.7 require
 # ====================
 def builtin_standard_gem_test
+  # Dateクラスは標準ライブラリであり、組み込みライブラリではないためrequireで読み込まないと
+  # エラーになる
+  # -> uninitialized constant Date (NameError)
+  begin
+    puts Date.today
+  rescue => exception
+    puts ("Exceptuion:'" + exception.to_s + "'")
+  end
+
+  require "date"
+  puts Date.today # -> 現在日付が出力される
+
+  # 独自に定義したライブラリもrequireが必要
+  begin
+    test
+  rescue => exception
+    puts ("Exceptuion:'" + exception.to_s + "'")
+  end
+
+  # requireで読み込むファイルの拡張子は省略できる
+  require "./require_test.rb"
+  # require "./require_test"
+  test
 end
 
 builtin_standard_gem_test
+
+# ====================
+# 2.12.8 load
+# ====================
+def load_test
+  # requireと同等のに独自ライブラリの読み込みが可能
+  load "./require_test.rb"
+  test
+
+  # ただし拡張子は省略できない
+  # load "./require_test" -> `load': cannot load such file -- ./require_test
+end
+
+load_test
+
+# ====================
+# 2.12.9 require_relative
+# ====================
+def require_relative_test
+  # require_relativeでライブラリを指定すると、呼び出し元からの相対パスで取得する
+  require_relative "./require_relative/require_relative_test"
+  relative_test
+end
+
+require_relative_test
+
+# ====================
+# 2.12.10 putsメソッド、printメソッド、pメソッド
+# ====================
+def puts_print_p_test
+  # putsメソッド
+  # 末尾に改行を出力、戻り値nil
+  rtrn_puts = puts "puts1" # ->puts1
+  rtrn_puts = puts "puts2" # ->puts2
+  puts rtrn_puts.nil?
+
+  # putsメソッド
+  # 末尾に改行なし、戻り値nil
+  rtrn_print = print "print1"
+  rtrn_print = print "print2"
+  puts ""
+  puts rtrn_print.nil?
+
+  # pメソッド
+  # 引数に渡した文字列をダブルクォーテーションで囲って表示、戻り値はpメソッドの引数をそのまま返す
+  # ※ただし、戻り値はダブルクォーテーションで囲まれていない
+  rtrn_p = p "abc"
+  puts rtrn_p
+
+  # 数値の場合はそのまま出力する
+  rtrn_p_num = p 123
+  puts rtrn_p_num
+
+  # 改行コードテスト
+  str = "abc\ndef\n"
+
+  # puts:abc
+  # def
+  puts "puts:" + str
+
+  # print:abc
+  # def
+  print "print:" + str
+
+  # "p:abc\ndef\n"
+  p "p:" + str
+
+  # 配列テスト
+  arr = [1, 2, 3]
+
+  # putsメソッドのみ、要素を改行で区切って出力
+  puts arr
+
+  # printとpメソッドは、配列をそのまま表示
+  print arr
+  puts ""
+  p arr
+end
+
+puts_print_p_test
