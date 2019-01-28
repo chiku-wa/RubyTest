@@ -120,6 +120,76 @@ def array_test
     sum += sum_value
   end
   puts sum
+
+  # {}をブロックとして使うことも可能
+  sum = 0
+  [1, 2, 3, 4, 5].each { |number| sum += number }
+  puts sum
+
+  # 4.4.1 map/collect
+  # 以下の処理はどちらも同じことをやっている
+
+  # eachで処理
+  numbers = [1, 2, 3, 4, 5]
+  numbers_10x = []
+  numbers.each do |number|
+    numbers_10x << number * 10
+  end
+  puts numbers_10x
+
+  # mapで処理
+  numbers = [1, 2, 3, 4, 5]
+  numbers_10x = numbers.map { |number| number * 10 }
+  puts numbers_10x
+
+  # 4.4.2 select/find_all/reject
+  # select
+  # 偶数を抽出
+  numbers_event = [1, 2, 3, 4, 5, 6].select { |n| n.even? }
+  puts numbers_event
+
+  # reject
+  # 奇数を抽出
+  numbers_odd = [1, 2, 3, 4, 5, 6].reject { |n| n.even? }
+  puts numbers_odd
+
+  # find/detect
+  even_val = [1, 2, 3, 4, 5, 6].find { |n| n.even? }
+  puts even_val #->2
+
+  # inject/reduce
+  numbers = [1, 2, 3, 4, 5]
+  sum = numbers.inject(0) { |result, number| result + number }
+  puts sum # ->15
+
+  week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].inject("Sun") { |result, w| result + w }
+  puts week # ->SunMonTueWedThuFriSat
+
+  #「&:」で省略
+  # 配列内の文字列を大文字に変換する
+  # [通常の記述方法]
+  puts ["apple", "banana", "grape"].map { |s| s.upcase }
+  # [省略形]
+  # 注意：{}ではなく、()で括る
+  puts ["apple", "banana", "grape"].map(&:upcase)
+
+  # 省略できないパターン
+  # ブロック引数が複数存在する
+  [1, 2, 3].inject(1) { |result, n| result + n }
+
+  # ブロック内のメソッドに引数が存在する
+  # 16進数に変換する処理
+  [100, 200, 300].map { |n| n.to_s(16) }
+
+  # ブロック内で複数の処理を実行している
+  [1, 2, 3].map do |n|
+    m = n * 10
+    m.to_s
+  end
+
+  # 範囲
+  array_num = (1..10)
+  puts array_num
 end
 
 array_test
