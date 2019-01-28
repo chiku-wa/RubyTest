@@ -188,8 +188,98 @@ def array_test
   end
 
   # 範囲
-  array_num = (1..10)
-  puts array_num
+  puts (1..5).class # ->Range
+  puts ("a".."e").class # ->Range
+
+  numbers = [0, 1, 2, 3, 4, 5]
+  puts numbers[2..4] # ->[2,3,4]
+  puts "---"
+  puts numbers[2...4] # ->[2,3]
+
+  # includeメソッド
+  range = (1..5)
+  puts range.include?(1) #->true
+  puts range.include?(0) #->false
+
+  # 文字列の抜き出し
+  str = "abcdef"
+  puts str[2..4] #->cde
 end
 
 array_test
+
+# 以上以下、以上未満の表現
+# 温度が0以上、100未満なら液体と表現する
+def liquid?(temperature)
+  temperature >= 0 && temperature < 100
+end
+
+puts liquid?(0) #->true
+puts liquid?(1) #->true
+puts liquid?(100) #->false
+
+puts "----"
+# Rangeオブジェクトを用いる
+def liquid?(temperature)
+  (0...100).include?(temperature)
+end
+
+puts liquid?(0) #->true
+puts liquid?(1) #->true
+puts liquid?(100) #->false
+
+# caseとRangeのテスト
+def charge(age)
+  case age
+  when 0..5
+    # 0〜5歳までの間
+    0
+  when 6..12
+    # 6〜12歳までの間
+    300
+  when 6..12
+    # 13〜18歳までの間
+    500
+  else
+    # それ以外の場合
+    1000
+  end
+end
+
+puts charge(5) #->0
+puts charge(10) #->300
+
+# 連続した数字が格納された配列を作成する
+def to_array_test
+  numbers_to_5 = (1...5).to_a
+  puts numbers_to_5.class # ->Array
+  puts numbers_to_5 # ->[1,2,3,4]
+
+  alphabets = ("a".."e").to_a
+  puts alphabets #-> ["a", "b","c","d","e"]
+
+  puts "---"
+
+  puts [*1..5].class #-> Array
+  puts [*1..5] #-> [1,2,3,4,5]
+
+  puts [*"a".."e"].class #-> Array
+  puts [*"a".."e"] #-> ["a","b","c","d","e"]
+end
+
+to_array_test
+
+def range_loop_test
+  # 範囲オブジェクトをそのままeach処理として使うことができる
+  sum = 0
+  (1..5).each { |n| sum += n }
+  puts sum # ->15
+
+  # stepを用いて増幅する値を調整できる
+  array = []
+  # 要素を1つ飛ばしでLoopする
+  (1..5).step(2) { |n| array << n }
+  puts array # ->[1,3,5,7,9]
+end
+
+range_loop_test
