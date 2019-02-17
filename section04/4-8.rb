@@ -116,6 +116,57 @@ def array_block
     file.puts("Line 3")
     # Close処理は自動で行うので処理の記述は不要
   end
+  #=> sample.txt
+  # Line 1
+  # Line 2
+  # Line 3
+
+  # === 4.8.7 do...endと{}の結合度の違い
+  # do...endと{}は同じブロックだが、結合度の違いにより、記述方法次第ではエラーになるため注意
+  arr = [1, 2, 3]
+
+  # --- do...end
+  # 配列に100が存在する場合は削除し、しない場合はNGを返す
+  res = arr.delete(100) do
+    "NG"
+  end
+  p res #=> NG
+
+  # Rubyの文法上、()は省略できる
+  res = arr.delete 100 do
+    "NG"
+  end
+  p res #=> NG
+
+  # --- {}
+  res = arr.delete(100) { "NG" }
+  p res #=> NG
+
+  # ()を省略すると、{}の結合度が強いため、「100 {"NG}」と解釈されてしまう
+  # res = arr.delete 100 {"NG"} # syntax error, unexpected '{', expecting keyword_end
+  res = arr.delete(100) { "NG" }
+  p res #=> NG
+
+  # === 4.8.8 ブロックを使うメソッドを定義する
+  # --- column
+  # 変数に格納しなくとも、ブロックにメソッドを定義することができる
+  puts [1, 2, 3].map { |n| n }.join("|") #=> 1|2|3
+
+  # do...endでも使用可能
+  # ただし、{}の方が見やすいためあまり使わない方が良い
+  puts(
+    [1, 2, 3].map do |n|
+      n
+    end.join("|")
+  )
+
+  # このように、メソッドの戻り値に対して別のメソッドを連結することを「メソッドチェーン」という
+
+  # ==================================================================================
+  # 配列には多くのAPIが提供されているため、自分で作り込む前にAPIドキュメントに目を通すこと。
+  # class Array (Ruby 2.6.0) https://docs.ruby-lang.org/ja/latest/class/Array.html
+  # class Enumerator (Ruby 2.6.0) https://docs.ruby-lang.org/ja/latest/class/Enumerator.html
+  # ==================================================================================
 end
 
 array_block
