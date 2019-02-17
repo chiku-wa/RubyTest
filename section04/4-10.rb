@@ -6,7 +6,7 @@ def section_4_10
   # === 4.10.1 break
   # breakを使うと処理を途中で抜けることができる
 
-  # shuffle関数でで配列の順序をランダムに並び替える
+  # shuffle関数で配列の順序をランダムに並び替える
   numbers = [1, 2, 3, 4, 5].shuffle
   numbers.each do |n|
     p n
