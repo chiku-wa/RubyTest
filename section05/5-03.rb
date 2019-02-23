@@ -1,4 +1,5 @@
 # encoding: utf-8
+# ===
 # === 5.3 シンボル
 def section_05_03
   # シンボルとは、文字列と似ているオブジェクトだが、実態としては別物。
@@ -7,6 +8,7 @@ def section_05_03
   puts :japan #=> japan
   p :japan #=> :japan # pメソッドだと「:」付きで出力される
 
+  # ===
   # === 5.3.1 シンボルと文字列の違い
   # classが異なる
   p :japan.class #=> Symbol

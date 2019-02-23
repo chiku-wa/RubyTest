@@ -3,6 +3,7 @@
 # 5.4 続・ハッシュについて
 # ================================
 def section_05_04
+  # ===
   # === 5.4.1 ハッシュのキーにシンボルを使う
   # シンボルをキーとして使う場合、「=>」の代わりに、「:」変数の右側に記述することができる
   currencies = {japan: "yen", us: "dollar", india: "rupee"}
@@ -53,6 +54,7 @@ end
 
 section_05_04
 
+# ===
 # === 5.4.3 メソッドのキーワード引数とハッシュ
 # キーワード引数(引数にハッシュを用いること)で、その引数の意味合いがわかりやすくなる
 def buy_burger(menu, drink, potato)
@@ -65,8 +67,8 @@ end
 # チーズバーガー、飲み物あり、ポテトなし
 buy_burger("cheese", true, false)
 
-# --- キーワード引数にデフォルト値を設定している場合
 # ---
+# --- キーワード引数にデフォルト値を設定している場合
 # 引数をハッシュにすることで、引数の意味合いがわかりやすくなる
 def buy_burger_hash_default(menu, drink: true, potato: true)
   p menu
@@ -87,8 +89,8 @@ buy_burger_hash_default("fish", potato: false, drink: true)
 # 存在しないキーワード引数を指定した場合はエラーになる
 # buy_burger_hash_default("chicken", salad: true) #=> unknown keyword: salad (ArgumentError)
 
-# --- キーワード引数にデフォルトを指定しない場合
 # ---
+# --- キーワード引数にデフォルトを指定しない場合
 def buy_burger_hash_non_default(menu, drink:, potato: true)
   p menu
   p "drink" if drink
@@ -99,3 +101,15 @@ buy_burger_hash_non_default("pork", drink: true)
 
 # デフォルト値がないキーワード引数を省略するとエラーになる
 # buy_burger_hash_non_default("pork") #=> missing keyword: drink (ArgumentError)
+
+# ---
+# --- キーワード引数のメソッドを呼び出す場合は、キーワード引数をハッシュにして渡す事ができる
+params = {potato: true, drink: false}
+buy_burger_hash_non_default("beef", params)
+
+# もちろん、変数を介さなくてもOK
+buy_burger_hash_non_default("beef", {potato: true, drink: false})
+
+# ★これはNGなので注意！単なるハッシュなので、引数を1つとしてみなしてしまう！★
+# buy_burger_hash_non_default("beef", {"potato" => true, "drink" => false})
+#=> wrong number of arguments (given 2, expected 1; required keyword: drink) (ArgumentError)

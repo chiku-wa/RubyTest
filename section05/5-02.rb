@@ -23,6 +23,7 @@ def section_05_02
   }
   puts h #> 円
 
+  # ===
   # === 5.2.1 要素の追加、変更、取得
   # 要素の追加
   currenncies = {"japan" => "yen", "india" => "rupee", "us" => "dollar"}
@@ -40,6 +41,7 @@ def section_05_02
   # キーが存在会しない場合はnilが返る
   p currenncies["brazil"] #=> nil
 
+  # ===
   # === 5.2.2 ハッシュを使った繰り返し処理
   currenncies = {"japan" => "yen", "india" => "rupee", "us" => "dollar"}
   # ブロックの第一引数がキー、第二引数が値として取り出せる
@@ -60,6 +62,7 @@ def section_05_02
   # ["india", "rupee"]
   # ["us", "dollar"]
 
+  # ===
   # === 5.2.3 ハッシュの同値比較、要素数の取得、要素の削除
   a = {"x" => 1, "y" => 2, "z" => 3}
   b = {"x" => 1, "y" => 2, "z" => 3}
