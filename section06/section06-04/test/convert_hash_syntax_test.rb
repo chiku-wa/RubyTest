@@ -12,14 +12,16 @@ class ConvertHashSyntaxTest < Minitest::Test
       {
         :name => "Alice",
         :age =>20,
-        :gender => "female"
+        :gender => "female",
+        :weight  =>  60
       }
     TEXT
     expected = <<~TEXT
       {
         name: "Alice",
         age: 20,
-        gender: "female"
+        gender: "female",
+        weight: 60
       }
     TEXT
     assert_equal expected, convert_hash_syntax(old_syntax)
