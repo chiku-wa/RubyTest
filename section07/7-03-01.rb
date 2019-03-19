@@ -1,4 +1,6 @@
 # encoding: utf-8
+# ===
+# === 7.3.1 オブジェクトの作成とinitializeメソッド
 class User
   def initialize
     puts "Initialized!"
