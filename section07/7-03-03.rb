@@ -90,3 +90,23 @@ puts user_attr.age  #=> 20
 # attr_writerなので、読み込もうとするとエラーになる
 user_attr.weight = 90
 # puts user_attr.weight #=> undefined method `weight' for #<UserAttr:0x00007fe5ae82b658> (NoMethodError)
+
+# ===
+# === Culumn
+# 同一のクラス名を定義した場合、一から作成し直されるわけではなく、既存の定義に追加される形になる
+class DuplicateUser
+  def hello
+    "Hello!"
+  end
+end
+
+class DuplicateUser
+  def bye
+    "Bye!"
+  end
+end
+
+user = DuplicateUser.new
+# 先に定義したHello!も出力される
+puts user.hello #=> Hello!
+puts user.bye #=> Bye!
