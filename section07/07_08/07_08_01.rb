@@ -8,8 +8,9 @@ class Product
 
   # クラス内部でfreezeで凍結することもできるが、メソッドの定義もできなくなるためまず使われない。
   # freeze
-  # DEFAULT_NAME = "<なし>"
-  #=>  `<class:Product>': can't modify frozen #<Class:Product> (FrozenError)
+  # def hello
+  # end
+  #=>  can't modify frozen class (FrozenError)
 end
 
 # エラーは出るが、再代入した値が返ってくる

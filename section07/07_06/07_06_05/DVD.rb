@@ -12,6 +12,8 @@ class DVD < Product
     super(name, price)
 
     # 以下の呼び出し方は誤りなのでNG
+    # クラスメソッドの呼び出しを意味し、通常のinitializeの呼び出しとは異なる
+    # 詳しくは後述
     # super.initialize(name, price)
 
     # 以下の記述は可能だが、重複してしまうのでおすすめしない

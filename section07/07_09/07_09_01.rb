@@ -27,10 +27,10 @@ end
 
 # クラスインスタンス変数とインスタンス変数は別の変数として扱われる
 
-puts Product.name #=> Product
-
 product = Product.new("Toy Story")
 puts product.name #=> Toy Story
+
+puts Product.name #=> Product
 
 # インスタンス変数はスーパークラスからサブクラスへそのまま受け継がれるが、
 # クラスインスタンス変数は、スーパークラスとサブクラスで個別に管理される。
@@ -41,6 +41,8 @@ class DVD < Product
   def self.name
     @name
   end
+
+  # スーパークラスと同じinitializeメソッドなら、メソッド自体を省略できる
 
   def upcase_name
     # スーパークラスから継承したインスタンス変数を大文字に変換

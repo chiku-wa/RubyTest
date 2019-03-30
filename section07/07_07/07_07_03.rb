@@ -17,6 +17,7 @@ class Product
     format_name
   end
 
+  # === ここから下はprivateメソッド
   private
 
   def currencies_symbol

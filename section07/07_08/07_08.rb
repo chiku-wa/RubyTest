@@ -7,10 +7,10 @@ class Product
   # 定数をprivateメソッドにすることもできる
   DEFAULT_NAME = "<なし>"
   private_constant :DEFAULT_NAME
-  # 文字列で指定することも可能
+  # 以下でも同じ意味。
   # private_constant "DEFAULT_NAME"
 
-  # 定数はメソッドの中で定義することはできない
+  # メソッドの中に定数はを宣言することはできない
   def defined_constant
     # DEFAULT_WEIGHT=0
     #=>

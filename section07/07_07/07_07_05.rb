@@ -20,9 +20,9 @@ class User
 
   # <<<<
 
+  # >>>>privateメソッドの領域
   private
 
-  # >>>>privateメソッドの領域
   def hello_private2
     puts "Hello!Private2."
   end

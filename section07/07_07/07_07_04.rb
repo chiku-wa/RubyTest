@@ -16,10 +16,11 @@ class User
     end
   end
 
-  # ②private_class_method
-  def hello_private2
+  # ②private_class_methodでprivateにするクラスメソッドを指定する
+  def self.hello_private2
     puts "Hello!Method for private_class_method."
   end
+  private_class_method :hello_private2
 
   # インスタンスメソッドと同じように、privateの下にクラスメソッドを定義してもprivateにならない
   private
@@ -30,7 +31,7 @@ class User
 end
 
 # privateメソッドとして扱われるためエラーになる
-# User.hello_private1 #=> private method `hello_private1' called for User:Class
-# User.hello_private2 #=> private method `hello_private2' called for User:Class
+# User.hello_private1 #=> private method `hello_private1' called for User:Class (NoMethodError)
+User.hello_private2 #=> private method `hello_private2' called for User:Class (NoMethodError)
 
 User.hello_public #=> Hello!Public.s

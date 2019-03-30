@@ -2,7 +2,7 @@
 # ===
 # === 7.7.6 あとからメソッドの公開レベルを変更する場合
 class User
-  # foo,barはpubklicメソッドとして定義し、あとからprivateメソッドに切り替える
+  # foo,barはpublicメソッドとして定義し、あとからprivateメソッドに切り替える
   # bazメソッドはpublicメソッドのまま
 
   # 一旦publicメソッドとして定義
@@ -16,7 +16,7 @@ class User
 
   # foo,barメソッドをprivateに変更
   private :foo, :bar
-  # ちなみに単なる引数なので、シンボルでなくても可能
+  # ちなみにprivateメソッドの引数はシンボルでなくて文字列でもOK
   # private "foo", "bar"
 
   # bazはpublicのまま

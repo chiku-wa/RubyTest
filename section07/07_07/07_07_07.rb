@@ -21,9 +21,9 @@ bob = User.new("Bob", 81)
 # そのままだと、weightメソッドはgetterが存在しないためエラーとなる
 # puts tom.heavier_than?(bob) #=> undefined method `weight' for #<User:0x00007f8fe9830f88 @name="Bob", @weight=81> (NoMethodError)
 
-# しかしweightをpublicとして公開してしまうと外部からも参照できてしまうため、heavier_than?メソッド
-# で比較する場合のみ参照させたい場合は、attr_XXXを使わずに、protected付きでgetterを定義する。
-# ※attr_XXXの実体は、publicのgetter,setter
+# しかしattr_readerなどでweightをpublicにしてしまうと外部からも参照できてしまうため(attr_XXXの実体は、publicのGetter,Setter)、
+# heavier_than?メソッドで比較する場合のみ参照させる。
+# attr_XXXを使わずに、protected付きでGetterを定義する。
 
 class UserForProtected
   attr_reader :name
@@ -38,6 +38,7 @@ class UserForProtected
     @weight > other_user.weight
   end
 
+  # protectedでGetterを定義する。
   # protectedで定義された場合は、同一のクラス、もしくはサブクラスのインスタンスメソッドからのみ呼び出せる
   protected
 
@@ -50,6 +51,8 @@ cacy = UserForProtected.new("Cacy", 50)
 alice = UserForProtected.new("Alice", 40)
 
 # aliceオブジェクトとcacyオブジェクトは、同じUsewrForProtectedクラスなのでweightを参照できる
+# weightを直接渡すのではなく、オブジェクトのみを引数として渡すようにすることで、weightを直接参照
+# できないようにしている。
 puts cacy.heavier_than?(alice) #=> true
 
 # protectedで定義されたGetterは、同一のクラス、もしくはサブクラスでしか参照できないため、
