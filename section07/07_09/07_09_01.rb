@@ -1,4 +1,4 @@
-#encoding: utf-8
+#7_encoding: utf-8
 # ===
 # === 7.9.1 クラスインスタンス変数
 class Product

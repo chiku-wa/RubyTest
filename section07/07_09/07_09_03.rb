@@ -21,15 +21,16 @@ class Program
   end
 end
 
-# 最初に定義したグローバル変数値が出力される
+# クラスメソッドからグローバル変数を呼び出す
 puts Program.name #=> Answer program
 
-# initializeメソッドで値が書き換わる
+# インスタンスメソッドからグローバル変数を呼び出す
+# →値をinitializeメソッドで値を書き換える
 program = Program.new("Question program")
 puts program.name #=> Question program
 
 # インスタンスメソッドでグローバル変数が書き換わっているため、クラスメソッドから呼び出しても
 # 値が変更されたまま
 puts Program.name #=> Question program
-
+# グローバル変数を直接呼び出すことも可能(クラスの修飾やインスタンスの生成は不要)
 puts $program_name #=> Question program

@@ -40,9 +40,9 @@ puts DVD.name #=> DVD
 product = Product.new("Tom Clancy")
 puts product.name #=> Tom Clancy
 
-# クラスから直接呼び出しても書き換わっている
+# クラスから直接呼び出しても書き換わったままになっている
 puts Product.name #=> Tom Clancy
-# サブクラスの@@nameも書き換わっている
+# サブクラスの@@nameも共通変数なので、スーパークラスと同じく書き換わっている
 puts DVD.name #=> Tom Clancy
 
 # サブクラスの変更に連動して、スーパークラスの@@name変数も書き換わっている

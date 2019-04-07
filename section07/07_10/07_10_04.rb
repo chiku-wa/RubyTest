@@ -10,11 +10,12 @@ class User
 end
 
 user = User.new
-# 「name=」までがメソッド名！
+# 一見代入に見えるが、「name=」はメソッド名！
 user.name = "Alice"
 user.name = ("Alice")
 
 # 「==」を使用するメソッドを再定義する
+# まずは==を再定義していないクラスで挙動確認
 class Product
   attr_reader :code, :name
 
@@ -33,6 +34,7 @@ p prdct1 == prdct2 #=> false
 p prdct1 == prdct3 #=> true
 #=> このままだと、Objectクラスの「==」メソッドが呼び出されるため、object_idで比較してしまう
 
+# 「==」を再定義する
 class ProductRedefine
   attr_reader :code, :name
 
