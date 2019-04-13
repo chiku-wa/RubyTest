@@ -33,11 +33,11 @@ class Human
 
   # 前述の「4. aとbが比較できないならnilを返す」を満たすために、比較対象は双方とも同一の
   # オブジェクト、もしくは継承関係である場合ことを条件とする
-  def <=>(other_weight)
+  def <=>(other_human)
     # インスタンスメソッド配下ではselfはインスタンスを指すため、クラスを特定したい場合は「class」メソッドを呼ぶこと
-    if other_weight.is_a?(self.class)
+    if other_human.is_a?(self.class)
       # <=> メソッドをそのまま実装する
-      @weight <=> other_weight.weight
+      @weight <=> other_human.weight
     else
       nil
     end

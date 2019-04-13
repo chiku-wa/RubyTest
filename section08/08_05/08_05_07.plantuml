@@ -1,0 +1,14 @@
+@startuml
+
+class Module {
+  Kernelモジュールや、EnumerableモジュールはModuleクラスのオブジェクト(インスタンス)
+}
+
+class Class{
+  StringクラスやArrayクラスはClassクラスのオブジェクト(インスタンス)
+}
+
+Object <|-- Module
+Module <|-- Class
+
+@enduml

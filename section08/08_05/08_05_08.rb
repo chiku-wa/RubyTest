@@ -52,4 +52,5 @@ animal.name_change
 
 # Setterメソッドを用いることで、該当するSetter(インスタンス変数)が存在しない場合はエラーになるため、
 # あらぬバグが混入するリスクを避けられる。
+# エラーに出力されている「=(value)」はSetterメソッドを指している
 # animal.change_weight #=> undefined method `weight=' for #<Animal:0x00007fcf5a823df0 @tag="pig", @name="ありす"> (NoMethodError)
