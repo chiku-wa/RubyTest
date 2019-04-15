@@ -1,0 +1,35 @@
+class Human {
+  ①
+}
+
+class モジュールB {
+  ②
+}
+
+class モジュールA {
+  ③
+}
+
+class Mammals {
+  ④
+}
+
+class Object {
+  ⑤
+}
+
+class Kernel {
+  ⑥
+}
+
+class BasicObject {
+  ⑦
+}
+
+Human -r-|> モジュールB
+Human -r-|> モジュールA
+Mammals <|-- Human
+Object <|-- Mammals
+Object -r-|> Kernel
+BasicObject <|-- Object
+

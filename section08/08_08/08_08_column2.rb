@@ -1,4 +1,5 @@
-#encoding: utf-8
+# frozen_string_literal: true
+
 # ===
 # === 8.8 状態を保持するモジュールの作成
 # === Column2 モジュールの用途は1つとは限らない
@@ -19,3 +20,4 @@ module AwesomeApi
     # 諸々の処理
   end
 end
+Á

@@ -1,0 +1,17 @@
+Numeric <|-- Integer
+Numeric <|-- Float
+Numeric <|-- Rational
+Numeric <|-- Complex
+
+class Integer {
+  整数
+}
+class Float {
+  実数、少数
+}
+class Rational {
+  有理数
+}
+class Complex {
+  複素数
+}
