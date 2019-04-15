@@ -1,9 +1,17 @@
-class モジュールA {
+@startuml
+
+object モジュールA {
   hello
 }
-class モジュールB {
+
+object モジュールB {
   good_night
 }
 
-User -r-|> モジュールA
-モジュールA -r-|> モジュールB
+object User {
+}
+
+User .r.|> モジュールA:include
+モジュールA .r.|> モジュールB:include
+
+@enduml

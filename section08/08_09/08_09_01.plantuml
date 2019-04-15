@@ -1,35 +1,38 @@
-class Human {
+@startuml
+
+object Human {
   ①
 }
 
-class モジュールB {
+object モジュールB {
   ②
 }
 
-class モジュールA {
+object モジュールA {
   ③
 }
 
-class Mammals {
+object Mammals {
   ④
 }
 
-class Object {
+object Object {
   ⑤
 }
 
-class Kernel {
+object Kernel {
   ⑥
 }
 
-class BasicObject {
+object BasicObject {
   ⑦
 }
 
-Human -r-|> モジュールB
-Human -r-|> モジュールA
+Human .r.|> モジュールB:include
+Human .r.|> モジュールA:include
 Mammals <|-- Human
 Object <|-- Mammals
-Object -r-|> Kernel
+Object .r.|> Kernel:include
 BasicObject <|-- Object
 
+@enduml
