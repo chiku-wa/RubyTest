@@ -1,0 +1,9 @@
+class モジュールA {
+  hello
+}
+class モジュールB {
+  good_night
+}
+
+User -r-|> モジュールA
+モジュールA -r-|> モジュールB

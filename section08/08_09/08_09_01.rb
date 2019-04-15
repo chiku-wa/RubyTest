@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# encoding: utf-8
 # ===
 # === 8.9.1 メソッド探索のルールを理解する
 
