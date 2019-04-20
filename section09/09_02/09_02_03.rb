@@ -30,7 +30,6 @@ def method3
   puts "End method3"
 end
 
-#
 method1
 #=>
 # Start method1
