@@ -5,6 +5,11 @@
 # AwesomeApiは、何らかのAPIを利用するライブラリ…という想定のモジュール
 # Awesome…すごい、という意味
 module AwesomeApi
+  # モジュールの直下で定義しているため、クラスインスタンス変数として機能する
+  # ※クラスの場合と同様の挙動
+  @base_url = ""
+  @debug_mode = false
+
   # クラスインスタンス変数のSetter,Getterを定義する
   # ※クラスインスタンス変数なので、self相当の記述が必要
   class << self
@@ -28,17 +33,15 @@ module AwesomeApi
     #   @debug_mode = debug_mode
     # end
   end
-
-  # モジュールの直下で定義しているため「、クラスインスタンス変数として機能する
-  # ※クラスの場合と同様の挙動
-  @base_url = ""
-  @debug_mode = false
 end
+
+p AwesomeApi.base_url #=> ""
+p AwesomeApi.debug_mode #=> false
 
 # Setterでモジュールのインスタンス変数を設定する
 AwesomeApi.base_url = "http://example.com"
 AwesomeApi.debug_mode = true
 
 # Getterでモジュールのインスタンス変数を参照する
-puts AwesomeApi.base_url
-puts AwesomeApi.debug_mode
+puts AwesomeApi.base_url  #=> http://example.com
+puts AwesomeApi.debug_mode #=> true

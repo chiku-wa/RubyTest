@@ -13,7 +13,7 @@ p Math::E #=> 2.718281828459045
 # 円周率
 p Math::PI #=> 3.141592653589793
 
-# Mathモジュールをミックス飲する
+# Mathモジュールをミックスインする
 class Caluculator
   include Math
 
@@ -28,6 +28,7 @@ puts caluculator.calc_sqrt(4) #=> 2.0
 # Kernelモジュールも同様に、特異メソッドとして使え、ミックスイン可能
 
 # 前の章でも学習したとおり、pメソッドやputsメソッドが使用できるのはObjectクラスがKernelモジュールをincludeしているから
+# ※トップレベルは、Objectクラスのmainオブジェクトであるため、必然的にKernelモジュールが使用可能になる
 puts "Kernel test"
 
 # putsメソッドは特異メソッドとして呼び出すこともできる

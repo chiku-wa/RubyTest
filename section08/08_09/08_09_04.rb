@@ -2,7 +2,8 @@
 # ===
 # === 8.9.4 prependで既存メソッドを置き換える
 
-# --- prependを用いずメソッドにモンキーパッチを当てる
+# ---
+# --- prependを用いず、aliasを使ってメソッドにモンキーパッチを当てる
 # prependがなかった時は、aliasを用いる必要があった
 
 # このクラスは、外部ライブラリとしてすでに定義されている想定
@@ -32,6 +33,7 @@ end
 mammals = Mammals.new
 puts mammals.name #=> <<Animals>>
 
+# ---
 # --- prependでaliasを用いずnameメソッドの挙動を変える
 class Car
   def name

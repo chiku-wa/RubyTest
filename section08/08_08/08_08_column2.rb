@@ -10,7 +10,7 @@ module AwesomeApi
   @debug_mode = false
 
   class << self
-    attr_accessor :base_url, debug_mode
+    attr_accessor :base_url, :debug_mode
   end
 end
 
@@ -20,4 +20,3 @@ module AwesomeApi
     # 諸々の処理
   end
 end
-Á
