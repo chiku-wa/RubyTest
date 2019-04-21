@@ -1,0 +1,29 @@
+@startuml
+  object Exception
+
+  object 特殊なエラー {
+    NoMemoryError、SystemExitなど
+  }
+
+  object StandardError {
+    通常のプログラムで発生しやすいエラーのスーパークラス
+  }
+  object RuntimeError
+  object NameError
+  object NoMethodError
+  object ZeroDivisionError
+  object TypeError
+  object ArgumentError
+  object その他の例外クラス
+
+  Exception <|-- 特殊なエラー
+  Exception <|-- StandardError
+    StandardError <|-- RuntimeError
+    StandardError <|--NameError
+      NameError <|-- NoMethodError
+    StandardError <|-- ZeroDivisionError
+    StandardError <|--TypeError
+    StandardError <|--ArgumentError
+    StandardError <|-- その他の例外クラス
+
+@enduml
