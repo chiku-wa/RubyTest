@@ -1,0 +1,19 @@
+@startuml
+start
+
+:テキストの入力を受け付ける;
+
+repeat
+  :正規表現の入力を受け付ける;
+repeat while(正しいパターンか？) is (NO)
+
+:マッチした文字列を取得する;
+
+if(マッチした文字列が存在するか？) then (yes)
+  :マッチした文字列を表示する;
+else(no)
+  :マッチしなかった、という文字列を表示する;
+endif
+
+stop
+@endumln
