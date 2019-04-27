@@ -9,3 +9,6 @@ Style/AsciiComments:
 # ダブルクォートでエラーがでないようにする
 StringLiterals:
   EnforcedStyle: double_quotes
+
+# beginがdef全域に及ぶ場合でもエラーがでないようにする
+# RedundantBegin: false

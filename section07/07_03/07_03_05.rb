@@ -32,3 +32,15 @@ puts prd.price #=> 0 ※定数で初期化されたprice属性
 # インスタンスメソッド、クラスメソッドから定数を参照
 puts prd.default_price #=> 0
 puts Product.default_price #=> 0
+
+# インスタンスメソッドで定数を設定することはできない。
+PREFIX = "[LOG]"
+
+class Mammals
+  def edit_prefix
+    # PREFIX="<LOG>"
+    #=>
+    # dynamic constant assignment
+    # PREFIX="<LOG>"
+  end
+end
