@@ -1,6 +1,6 @@
 # 使用するRubyのバージョンを指定する
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.6.2
 
 # コメントに日本語を使用できるようにする
 Style/AsciiComments:
