@@ -1,0 +1,27 @@
+@startuml
+
+object greeting_common {
+  受け取る引数1:挨拶を格納した配列
+  受け取る引数2:配列の二番目を加工するためのブロック引数
+}
+object greeting_ja {
+  引数1:["おはよう", "こんにちは", "こんばんわ"]
+  引数2(呼び出し元から受け取る):ブロック引数
+}
+object greeting_en {
+  引数1:["Mornin", "Hello", "Evening"]
+  引数2(呼び出し元から受け取る):ブロック引数
+}
+object 日本語挨拶の呼び出し {
+  ブロック引数
+}
+object 英語挨拶の呼び出し {
+  ブロック引数
+}
+
+greeting_common <-u- greeting_ja
+greeting_ja <-u- 日本語挨拶の呼び出し
+greeting_common <-u- greeting_en
+greeting_en <-u- 英語挨拶の呼び出し
+
+@enduml

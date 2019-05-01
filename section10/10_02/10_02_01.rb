@@ -1,4 +1,6 @@
 #encoding: utf-8
+# ===
+# === 10.2.1 yieldを使ってブロックの処理を呼び出す
 def greeting
   puts "おはよう"
 end
