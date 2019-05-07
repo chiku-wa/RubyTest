@@ -39,8 +39,15 @@ module Effects
     # Ruby is fun → RUBY!! IS!! FUN!!
     def loud(level = 1)
       ->(word) do
-        word.upcase!
-        word.split(" ").map { |one_word| "#{one_word}#{"!" * level}" }.join(" ")
+        # 破壊的メソッドを用いて大文字に変換することも可能だが、word変数が他のメソッドで
+        # 流用された時にバグ混入の原因になる為避ける。
+        # word.upcase!
+
+        # メソッドチェーンは改行して見やすく表現する
+        word
+          .split(" ")
+          .map { |one_word| "#{one_word.upcase}#{"!" * level}" }
+          .join(" ")
       end
     end
   end
