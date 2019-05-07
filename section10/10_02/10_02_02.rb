@@ -89,6 +89,7 @@ puts "==========="
 # --- ブロック引数を用いるメリット
 
 # --- 1. ブロックを他のメソッドに渡すことができる
+
 # greeiting_XXで共通で使用するメソッド
 # texsに格納された3つの挨拶を出力する。
 # ただし、2番目の要素に対してはブロック引数に定義された形式に沿って出力する。
@@ -135,7 +136,8 @@ greeting_en { |text| "#{text.upcase}" }
 
 puts "---"
 
-# greeting_commonにブロック引数を渡す時に「&」を付与しないとエラーになる
+# ggreeting_errメソッドでは、reeting_commonにブロック引数を渡す時に「&」を付与して
+# いないためエラーになる。
 # greeting_err { |text| "#{text}!!!" }
 #=> wrong number of arguments (given 2, expected 1) (ArgumentError)
 
