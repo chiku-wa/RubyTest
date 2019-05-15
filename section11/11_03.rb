@@ -25,7 +25,3 @@
 
 # deleteメソッドには引数が必須だが、引数を渡さずに実行しようとする
 # [1, 2, 3].delete #=> wrong number of arguments (given 0, expected 1) (ArgumentError)
-
-# === 11.3.5
-# 整数を0で割ろうとするとエラーになる
-# 1 / 0 #=> divided by 0 (ZeroDivisionError)
