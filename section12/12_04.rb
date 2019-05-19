@@ -2,7 +2,7 @@
 # ===
 # === 12.4 特定の形式のファイルを読み書きする
 
-# CSVクラス
+# --- 12.4.1 CSVクラス
 require "csv"
 
 # CSVの書き込み処理
@@ -34,3 +34,54 @@ end
 # 1: who  2: do  3:
 # 1: Tom  2: play  3:
 # 1: Alice  2: listen  3:
+
+# --- 12.4.2 JSONクラス
+require "json"
+user = { name: "Alice", age: 20, email: "alice@example.com" }
+
+# ハッシュをJSON形式の文字列に変換する
+user_json = user.to_json
+puts user_json #=> {"name":"Alice","age":20,"email":"alice@example.com"}
+
+# 逆に、JSONをパースしてハッシュ形式に変換する
+json_parse = JSON.parse(user_json)
+p json_parse #=> #=> {"name"=>"Alice", "age"=>20, "email"=>"alice@example.com"}
+p json_parse.class #=> Hash
+
+# --- 12.4.3 YAMLクラス
+require "yaml"
+
+# YAML形式のデータを作成する
+yaml = <<TEXT
+alice:
+  name: "Alice"
+  age: 20
+  email: "alice@example.com"
+TEXT
+
+puts yaml
+#=>
+# alice:
+#  name: "Alice"
+#  age: 20
+#  email: "alice@example.com"
+
+# YAMLをハッシュに変換する
+users = YAML.load(yaml)
+
+puts users #=> {"alice"=>{"name"=>"Alice", "age"=>20, "email"=>"alice@example.com"}}
+puts users.class #=> Hash
+
+# ハッシュに新しい要素を追加する
+users["alice"]["gender"] = :female
+
+# ハッシュからYAMLに変換する
+puts YAML.dump(users)
+#=>
+# ※「---」も出力される。
+# ---
+# alice:
+#   name: Alice
+#   age: 20
+#   email: alice@example.com
+#   gender: :female
