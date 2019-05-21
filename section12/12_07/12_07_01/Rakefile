@@ -1,0 +1,13 @@
+# Rakefileが存在するディレクトリに移動し、以下のコマンドで実行する
+# $ rake Rakefile
+
+# 名前空間を使って分けることもできる
+namespace :animals do
+  task :dog do
+    puts "Doggy"
+  end
+
+  task :cat do
+    puts "Cat"
+  end
+end

@@ -1,0 +1,13 @@
+require "rake/testtask"
+
+# Rake::TestTaskで、タスクを新規に作成する。
+# この時、タスクの名前は自動的に「test」となる
+Rake::TestTask.new do |t|
+  # カレントディレクトリのtestディレクトリ配下の、末尾が「_test.rb」で終わるテストコードを実行する。
+  # サブディレクトリは存在してもしなくてもよい。
+  t.pattern = "test/**/*_test.rb"
+end
+
+# 「rake」コマンドでタスク名を指定しなかった場合に、自動的に実行されるタスクを指定する。
+# 今回は、「test」とタスクを自動的に実行させる。
+task default: :test
