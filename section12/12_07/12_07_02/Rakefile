@@ -9,5 +9,6 @@ Rake::TestTask.new do |t|
 end
 
 # 「rake」コマンドでタスク名を指定しなかった場合に、自動的に実行されるタスクを指定する。
-# 今回は、「test」とタスクを自動的に実行させる。
+# 今回は、「test」というなめのタスクを自動的に実行させる。
+# ※前述の通り、「TestTask.new」をすると、自動的にタスク名が「test」となるため
 task default: :test
